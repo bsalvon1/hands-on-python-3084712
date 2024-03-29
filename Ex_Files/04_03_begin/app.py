@@ -23,7 +23,15 @@ def laureate_list():
         return jsonify(results)
 
     # Your code here!
-    return "your code here!"
+    search_string = request.args.get("surname").lower().strip()
+
+    for i in laureates:
+        if search_string in i["surname"].lower():
+            results.append(i)
+
+    return jsonify(results)
+
+    ##return "your code here!"
 
 
 app.run(debug=True)
